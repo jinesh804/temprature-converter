@@ -1,1 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css-file/file.css">
+    <title>Document</title>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    background: url("sunrise-yellow-mountains-hills-and-forest-1634919 (1).jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: black;
+    
 
+}
+
+
+.icon img{
+    display: inline-block;
+    width: 200px;
+    margin-bottom: 30px;
+}
+label{
+    text-transform: capitalize;
+    font-size: 4rem;
+    color: #0f100e;
+    font-weight: 600;
+}
+
+#val{
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+    border: 5px solid #0f100e;
+    outline: none;
+    font-weight: 600;
+    border-radius: 5px;
+    color:  #0f100e;
+}
+#op{
+    margin-top: 20px;
+    height: 50px;
+    width: 100px;
+    /* margin-bottom: 20px; */
+    font-size: 2rem;
+    text-align: center;
+    border: 5px solid #0f100e;
+    outline: none;
+    font-weight: 600;
+    border-radius: 5px;
+    text-transform: uppercase;
+    color:  #556b2f;
+}
+#sub{
+    padding: 0.2em 0.8em;
+    color: white;
+    background:  #556b2f;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    outline: none;
+    text-decoration: none;
+    
+}
+#sub:hover{
+    background: #415223;
+}
+#result{
+    font-size: 3rem;
+    text-transform: capitalize;
+    color: #556b2f;
+}
+
+@media (max-width:500px){
+    html{
+        font-size: 50%;
+    }
+    label{
+        font-size: 3rem;
+    }
+    #ic{
+        width: 150px;
+        margin-bottom: 10px;
+    }
+    #ressult{
+        font-size: 2rem;
+    }
+    .contenor{
+        padding-bottom: 100px;
+    }
+}
+
+    </style>
+</head>
+<body >
+    
+            <form class="contenor" onsubmit="main(); return false">
+                <div class="icon"> <img src="temperature-vector-icon.jpg" alt="" id="ic" style="color: #0f100e;"></div>
+                <label>convert temperature into celsius or fahrenheit</label>
+                <br>
+                <input type="number" id="val" name="temp">
+                <select name="op" id="op">
+                    <option value="celsius">celsius</option>
+                    <option value="fahrenheit">fahrenheit</option>
+                </select>
+                </br>
+                <input type="submit" id="sub" name="temp">
+                <h1 id='result'></h1>
+            </form>
+      
+    
+    <script >let main=()=>{
+        let val = document.getElementById('val').value
+        let op = document.getElementById('op').value
+        let result = document.getElementById('result')
+        let ic = document.getElementById('ic')
+    
+        let re
+    
+        let FtoC=(chr)=>{
+            let c = Math.round((chr-32)*5/9)
+            if(c <= 10){
+                result.innerHTML=(`<span>&#129398;</span> Result = ${c}°celsius <span>&#129398;</span>`) 
+                ic.src = "R.jpg"
+            }else if(c >= 40){
+                result.innerHTML =(`<span>&#129397;</span> Result = ${c}°celsius <span>&#129397;</span>`) 
+                ic.src = "669aeb2945029bb3f7ce83d8e5a2dfb0.jpg"
+            }else{
+                result.innerHTML=(`<span>&#128519;</span> Result = ${c}°celsius <span>&#128519;</span>`)
+                ic.src = "R.png"
+            }
+        }
+    
+        let CtoF=(fhr)=>{
+            let f = Math.round((fhr*9/5)+32)
+            if(f <= 50){
+                result.innerHTML=(`<span>&#129398;</span> Result = ${f}°fahrenheit <span>&#129398;</span>`) 
+                ic.src = "R.jpg"
+            }else if(f >= 104){
+                result.innerHTML =(`<span>&#129397;</span> Result = ${f}°fahrenheit <span>&#129397;</span>`) 
+                ic.src = "669aeb2945029bb3f7ce83d8e5a2dfb0.jpg"
+            }else{
+                result.innerHTML=(`<span>&#128519;</span> Result = ${f}°fahrenheit <span>&#128519;</span>`)
+                ic.src = "R.png"
+                
+            }
+        }
+    
+        if(op=="celsius"){
+            re = FtoC(val)
+            return re
+        }else{
+            re= CtoF(val)
+            return re
+        }
+    }</script>
+</body>
+</html>
